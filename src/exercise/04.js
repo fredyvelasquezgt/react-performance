@@ -97,10 +97,15 @@ function App() {
     run(getItems(inputValue))
   }, [inputValue, run])
 
-  // 🐨 create a listRef with React.useRef
-  // which will be used for the parentRef option you pass to useVirtual
-  // and should be applied to the <ul /> for our menu. This is how react-virtual
-  // knows how to scroll our items as the user scrolls.
+  const listRef = React.useRef()
+  const rowVirtualizer = useVirtual({
+    size: items.length, 
+    parentRef: listRef,
+    estimateSize: React.useCallback(() => 20, []),
+    overscan: 10
+  })
+  
+  console.log(rowVirtualizer)
 
   // 🐨 call useVirtual with the following configuration options:
   // - size (the number of items)
