@@ -56,7 +56,7 @@ function ListItem({
     />
   )
 }
-// 🐨 Memoize the ListItem here using React.memo
+ListItem = React.memo(ListItem)
 
 function App() {
   const forceRerender = useForceRerender()
