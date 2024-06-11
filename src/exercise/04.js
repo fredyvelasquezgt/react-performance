@@ -23,7 +23,9 @@ function Menu({
   getItemProps,
   highlightedIndex,
   selectedItem,
-  // 🐨 accept listRef, virtualRows, totalHeight
+  listRef, 
+  virtualRows, 
+  totalHeight
 }) {
   return (
     // 🐨 pass the listRef to the `getMenuProps` prop getter function below:
@@ -67,7 +69,7 @@ function ListItem({
   index,
   isHighlighted,
   isSelected,
-  // 🐨 accept the style prop
+  style,
   ...props
 }) {
   return (
@@ -78,7 +80,7 @@ function ListItem({
         style: {
           backgroundColor: isHighlighted ? 'lightgray' : 'inherit',
           fontWeight: isSelected ? 'bold' : 'normal',
-          // 🐨 spread the incoming styles onto this inline style object
+          ...style
         },
         ...props,
       })}
