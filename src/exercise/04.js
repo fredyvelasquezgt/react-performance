@@ -30,7 +30,7 @@ function Menu({
   return (
     // 🐨 pass the listRef to the `getMenuProps` prop getter function below:
     // 💰  getMenuProps({ref: listRef})
-    <ul {...getMenuProps()}>
+    <ul {...getMenuProps(listRef)}>
       {/* 🐨 add a li here with an inline style for the height set to the totalHeight */}
       {/*
         🦉 this is to ensure that the scrollable area of the <ul /> is the
@@ -107,15 +107,7 @@ function App() {
   
   console.log(rowVirtualizer)
 
-  // 🐨 call useVirtual with the following configuration options:
-  // - size (the number of items)
-  // - parentRef (the listRef you created above)
-  // - estimateSize (a memoized callback function that returns the size for each item)
-  //   💰 in our case, every item has the same size, so this will do: React.useCallback(() => 20, [])
-  // - overscan (the number of additional rows to render outside the scrollable view)
-  //   💰 You can play around with that number, but you probably don't need more than 10.
-  // 🐨 you can set the return value of your useVirtual call to `rowVirtualizer`
-
+ 
   const {
     selectedItem,
     highlightedIndex,
@@ -163,9 +155,9 @@ function App() {
           highlightedIndex={highlightedIndex}
           selectedItem={selectedItem}
           // 🐨 pass the following props:
-          // listRef: listRef
-          // virtualRows: rowVirtualizer.virtualItems
-          // totalHeight: rowVirtualizer.totalSize
+          listRef={listRef}
+          virtualRows={rowVirtualizer.virtualItems}
+          totalHeight={rowVirtualizer.totalSize}
         />
       </div>
     </div>
