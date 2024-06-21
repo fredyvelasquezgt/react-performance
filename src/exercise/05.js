@@ -1,5 +1,5 @@
 // Optimize context value
-// http://localhost:3000/isolated/exercise/05.js
+// http://localhost:3000/isolated/final/05.js
 
 import * as React from 'react'
 import {
@@ -38,8 +38,7 @@ function AppProvider({children}) {
     dogName: '',
     grid: initialGrid,
   })
-  // 🐨 memoize this value with React.useMemo
-  const value =  React.useMemo(() => [state, dispatch], [state, dispatch])
+  const value = React.useMemo(() => [state, dispatch], [state])
   return (
     <AppStateContext.Provider value={value}>
       {children}
