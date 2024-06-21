@@ -104,12 +104,11 @@ Cell = React.memo(Cell)
 function DogNameInput() {
   
   const [dogName, setDogName] = React.useState('')
-  const {dogName} = state
 
   function handleChange(event) {
     const newDogName = event.target.value
     // 🐨 change this to call your state setter that you get from useState
-    dispatch({type: 'TYPED_IN_DOG_INPUT', dogName: newDogName})
+    setDogName(newDogName)
   }
 
   return (
