@@ -1,5 +1,5 @@
 // Fix "perf death by a thousand cuts"
-// http://localhost:3000/isolated/exercise/06.js
+// http://localhost:3000/isolated/final/06.js
 
 import * as React from 'react'
 import {
@@ -19,8 +19,6 @@ const initialGrid = Array.from({length: 100}, () =>
 
 function appReducer(state, action) {
   switch (action.type) {
-    // we're no longer managing the dogName state in our reducer
-    // 💣 remove this case
     case 'UPDATE_GRID_CELL': {
       return {...state, grid: updateGridCellState(state.grid, action)}
     }
@@ -35,7 +33,6 @@ function appReducer(state, action) {
 
 function AppProvider({children}) {
   const [state, dispatch] = React.useReducer(appReducer, {
-
     grid: initialGrid,
   })
   return (
@@ -102,12 +99,10 @@ function Cell({row, column}) {
 Cell = React.memo(Cell)
 
 function DogNameInput() {
-  
   const [dogName, setDogName] = React.useState('')
 
   function handleChange(event) {
     const newDogName = event.target.value
-    // 🐨 change this to call your state setter that you get from useState
     setDogName(newDogName)
   }
 
